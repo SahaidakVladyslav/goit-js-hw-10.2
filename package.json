@@ -16,6 +16,10 @@
   "license": "ISC",
   "dependencies": {
     "vite-plugin-full-reload": "^1.0.5",
-    "vite-plugin-html-inject": "^1.0.1"
+    "vite-plugin-html-inject": "^1.0.1",
+    "flatpickr": "^4.6.13",
+    "lodash.throttle": "^4.1.1",
+    "modern-normalize": "^1.1.0",
+    "notiflix": "^3.2.6"
   }
 }
