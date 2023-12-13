@@ -1,5 +1,8 @@
 import flatpickr from "flatpickr";
-import { IziToast } from 'izitoast';
+import izitoast from "izitoast";
+// import "./node_modules/izitoast/dist/css/iziToast.min.css";
+
+
 
 const delayInputEl = document.querySelector('[name="delay"]');
 const stepInputEl = document.querySelector('[name="step"]');
