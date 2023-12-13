@@ -1,6 +1,5 @@
 import flatpickr from "flatpickr";
-import izitoast from "izitoast";
-// import "./node_modules/izitoast/dist/css/iziToast.min.css";
+
 
 
 
@@ -84,12 +83,6 @@ function createPromise(position, initialDelay, subsequentDelay) {
 formEl.addEventListener('submit', (event) => {
     event.preventDefault();
     btnNone()
-    iziToast.success({
-        id: success,
-        title: 'OK',
-        message: 'Successfully inserted record!',
-        // positio
-    });
     const amountStep = amountInputEl.value;
     const initialDelay = delayInputEl.value;
     const subsequentDelay = stepInputEl.value;

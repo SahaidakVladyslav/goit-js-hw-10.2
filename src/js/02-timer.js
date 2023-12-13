@@ -1,9 +1,9 @@
 
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
-import izitoast from "izitoast";
-// import "./node_modules/izitoast/dist/css/iziToast.min.css";
-import "izitoast/dist/izitoast.min.css";
+import * as izitoast from "izitoast";
+// import "izitoast/dist/izitoast.min.css";
+
 
 
 
@@ -78,19 +78,24 @@ function timerTextContent() {
 }
 
 btnNone();
-iziToast.settings({
-    timeout: 10000,
-    resetOnHover: true,
-    icon: 'material-icons',
-    transitionIn: 'flipInX',
-    transitionOut: 'flipOutX',
-    onOpening: function () {
-        console.log('callback abriu!');
-    },
-    onClosing: function () {
-        console.log("callback fechou!");
-    }
+
+document.addEventListener('DOMContentLoaded', function () {
+    iziToast.settings({
+        timeout: 10000,
+        resetOnHover: true,
+        icon: 'material-icons',
+        transitionIn: 'flipInX',
+        transitionOut: 'flipOutX',
+        onOpening: function () {
+            console.log('callback abriu!');
+        },
+        onClosing: function () {
+            console.log("callback fechou!");
+        }
+    });
 });
+
+
 const options = {
     enableTime: true,
     time_24hr: true,
@@ -99,11 +104,13 @@ const options = {
     onClose(selectedDates) {
         clearInterval(timeUpdateTime);
         if (selectedDates[0].getTime() <= options.defaultDate.getTime()) {
-            iziToast.error({
-                title: 'Error',
-                message: 'Illegal operation',
-            });
 
+            document.addEventListener('DOMContentLoaded', function () {
+                iziToast.error({
+                    title: 'Error',
+                    message: 'Illegal operation',
+                });
+            });
             emptyTextContent()
             btnNone();
         } else {
