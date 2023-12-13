@@ -1,7 +1,5 @@
-import Notiflix from 'notiflix';
 import flatpickr from "flatpickr";
-import { Report } from 'notiflix/build/notiflix-report-aio';
-import { Confirm } from 'notiflix/build/notiflix-confirm-aio';
+import { IziToast } from 'izitoast';
 
 const delayInputEl = document.querySelector('[name="delay"]');
 const stepInputEl = document.querySelector('[name="step"]');
@@ -37,14 +35,10 @@ function createPromise(position, initialDelay, subsequentDelay) {
                     counterAmount += 1
                     timeDelay = +timeDelay + +subsequentDelay;
                     if (shouldResolve) {
-                        Notiflix.Notify.failure(
-                            `❌ Rejected promise ${counterAmount} in ${timeDelay}ms`
-                        );
+
                         console.log(`виклик зробився за такий час ${timeDelay}`)
                     } else {
-                        Notiflix.Notify.success(
-                            `✅ Fulfilled promise ${counterAmount} in ${timeDelay}ms`
-                        );
+
                         console.log(`виклик зробився за такий час ${timeDelay}`)
                     }
                     count += 1;
@@ -63,19 +57,16 @@ function createPromise(position, initialDelay, subsequentDelay) {
             if (count === 0) {
                 setTimeout(() => {
                     const shouldResolve = Math.random() > 0.3;
+                    console.log(1)
 
                     count += 1;
                     if (shouldResolve) {
-                        Notiflix.Notify.success(
-                            `✅ Fulfilled promise ${counterAmount} in ${initialDelay}ms`
-                        );
+
                         console.log(`виклик зробився за такий час ${initialDelay}`)
                         finallyDesition()
                         resolve('To praca!');
                     } else {
-                        Notiflix.Notify.failure(
-                            `❌ Rejected promise ${counterAmount} in ${initialDelay}ms`
-                        );
+
                         console.log(`виклик зробився за такий час ${initialDelay}`)
                         finallyDesition()
                         reject('To NE praca!');
@@ -90,6 +81,12 @@ function createPromise(position, initialDelay, subsequentDelay) {
 formEl.addEventListener('submit', (event) => {
     event.preventDefault();
     btnNone()
+    iziToast.success({
+        id: success,
+        title: 'OK',
+        message: 'Successfully inserted record!',
+        // positio
+    });
     const amountStep = amountInputEl.value;
     const initialDelay = delayInputEl.value;
     const subsequentDelay = stepInputEl.value;
@@ -102,5 +99,3 @@ formEl.addEventListener('submit', (event) => {
             console.log('Promise rejected:', error);
         })
 });
-
-console.log()

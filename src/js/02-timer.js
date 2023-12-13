@@ -1,7 +1,7 @@
-import Notiflix from 'notiflix';
+
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
-import { Report } from 'notiflix/build/notiflix-report-aio';
+
 const inputEl = document.querySelector('#datetime-picker');
 const btnStart = document.querySelector('[data-start]');
 const inputDays = document.querySelector('[data-days]');
@@ -73,7 +73,19 @@ function timerTextContent() {
 }
 
 btnNone();
-
+iziToast.settings({
+    timeout: 10000,
+    resetOnHover: true,
+    icon: 'material-icons',
+    transitionIn: 'flipInX',
+    transitionOut: 'flipOutX',
+    onOpening: function () {
+        console.log('callback abriu!');
+    },
+    onClosing: function () {
+        console.log("callback fechou!");
+    }
+});
 const options = {
     enableTime: true,
     time_24hr: true,
@@ -82,7 +94,11 @@ const options = {
     onClose(selectedDates) {
         clearInterval(timeUpdateTime);
         if (selectedDates[0].getTime() <= options.defaultDate.getTime()) {
-            Notiflix.Notify.failure('Please choose a date in the future');
+            iziToast.error({
+                title: 'Error',
+                message: 'Illegal operation',
+            });
+
             emptyTextContent()
             btnNone();
         } else {
