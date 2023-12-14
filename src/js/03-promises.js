@@ -1,5 +1,5 @@
-import flatpickr from "flatpickr";
-
+import iziToast from "izitoast";
+import "izitoast/dist/css/izitoast.min.css";
 
 
 
@@ -13,6 +13,18 @@ let timerId = null;
 let count = 0;
 let timeDelay = 0;
 let counterAmount = 0;
+
+iziToast.settings({
+    timeout: 2000,
+    resetOnHover: true,
+    icon: 'material-icons',
+    transitionIn: 'flipInX',
+    transitionOut: 'flipOutX',
+    position: "topRight",
+    onOpening: function () {
+        console.log('callback abriu!');
+    },
+});
 
 const btnNone = () => {
     btnStart.style.opacity = 0.5;
@@ -37,10 +49,16 @@ function createPromise(position, initialDelay, subsequentDelay) {
                     counterAmount += 1
                     timeDelay = +timeDelay + +subsequentDelay;
                     if (shouldResolve) {
-
+                        iziToast.success({
+                            title: 'Success',
+                            message: `виклик зробився за такий час ${timeDelay} ms`,
+                        });
                         console.log(`виклик зробився за такий час ${timeDelay}`)
                     } else {
-
+                        iziToast.error({
+                            title: 'Error',
+                            message: `виклик зробився за такий час ${timeDelay} ms`,
+                        });
                         console.log(`виклик зробився за такий час ${timeDelay}`)
                     }
                     count += 1;
@@ -54,7 +72,6 @@ function createPromise(position, initialDelay, subsequentDelay) {
             }
         }
 
-
         function intervalFunction() {
             if (count === 0) {
                 setTimeout(() => {
@@ -63,13 +80,19 @@ function createPromise(position, initialDelay, subsequentDelay) {
 
                     count += 1;
                     if (shouldResolve) {
-
-                        console.log(`виклик зробився за такий час ${initialDelay}`)
+                        iziToast.success({
+                            title: 'Success',
+                            message: `виклик зробився за такий час ${initialDelay} ms`,
+                        });
+                        console.log(`виклик зробився за такий час ${initialDelay} ms`)
                         finallyDesition()
                         resolve('To praca!');
                     } else {
-
-                        console.log(`виклик зробився за такий час ${initialDelay}`)
+                        iziToast.error({
+                            title: 'Error',
+                            message: `виклик зробився за такий час ${initialDelay} ms`,
+                        });
+                        console.log(`виклик зробився за такий час ${initialDelay} ms`)
                         finallyDesition()
                         reject('To NE praca!');
                     }

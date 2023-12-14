@@ -1,8 +1,8 @@
 
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
-import * as izitoast from "izitoast";
-// import "izitoast/dist/izitoast.min.css";
+import iziToast from "izitoast";
+import "izitoast/dist/css/izitoast.min.css";
 
 
 
@@ -79,21 +79,19 @@ function timerTextContent() {
 
 btnNone();
 
-document.addEventListener('DOMContentLoaded', function () {
-    iziToast.settings({
-        timeout: 10000,
-        resetOnHover: true,
-        icon: 'material-icons',
-        transitionIn: 'flipInX',
-        transitionOut: 'flipOutX',
-        onOpening: function () {
-            console.log('callback abriu!');
-        },
-        onClosing: function () {
-            console.log("callback fechou!");
-        }
-    });
+
+iziToast.settings({
+    timeout: 2000,
+    resetOnHover: true,
+    icon: 'material-icons',
+    transitionIn: 'flipInX',
+    transitionOut: 'flipOutX',
+    position: "topRight",
+    onOpening: function () {
+        console.log('callback abriu!');
+    },
 });
+
 
 
 const options = {
@@ -104,12 +102,9 @@ const options = {
     onClose(selectedDates) {
         clearInterval(timeUpdateTime);
         if (selectedDates[0].getTime() <= options.defaultDate.getTime()) {
-
-            document.addEventListener('DOMContentLoaded', function () {
-                iziToast.error({
-                    title: 'Error',
-                    message: 'Illegal operation',
-                });
+            iziToast.error({
+                title: 'Error',
+                message: 'Please choose a date in the future',
             });
             emptyTextContent()
             btnNone();
