@@ -21,9 +21,6 @@ iziToast.settings({
     transitionIn: 'flipInX',
     transitionOut: 'flipOutX',
     position: "topRight",
-    onOpening: function () {
-        console.log('callback abriu!');
-    },
 });
 
 const btnNone = () => {
@@ -85,16 +82,16 @@ function createPromise(position, initialDelay, subsequentDelay) {
                             message: `виклик зробився за такий час ${initialDelay} ms`,
                         });
                         console.log(`виклик зробився за такий час ${initialDelay} ms`)
-                        finallyDesition()
-                        resolve('To praca!');
+
+                        resolve(finallyDesition());
                     } else {
                         iziToast.error({
                             title: 'Error',
                             message: `виклик зробився за такий час ${initialDelay} ms`,
                         });
                         console.log(`виклик зробився за такий час ${initialDelay} ms`)
-                        finallyDesition()
-                        reject('To NE praca!');
+
+                        reject(finallyDesition());
                     }
                 }, initialDelay)
             }
