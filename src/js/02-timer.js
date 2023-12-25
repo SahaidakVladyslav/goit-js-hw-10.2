@@ -2,8 +2,7 @@
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 import iziToast from "izitoast";
-import "../relative/path/to/izitoast.min.css";
-
+import "izitoast/dist/css/izitoast.min.css";
 
 
 
