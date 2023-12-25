@@ -14,6 +14,7 @@ export default defineConfig(({ command }) => {
 
       rollupOptions: {
         input: glob.sync('./src/*.html'),
+        external: ['izitoast/dist/css/izitoast.min.css'],
         output: {
           manualChunks(id) {
             if (id.includes('node_modules')) {
