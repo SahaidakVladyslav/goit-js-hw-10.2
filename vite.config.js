@@ -13,7 +13,6 @@ export default defineConfig(({ command }) => {
       sourcemap: true,
 
       rollupOptions: {
-        external: ['izitoast/dist/css/izitoast.min.css'],
         input: glob.sync('./src/*.html'),
         output: {
           manualChunks(id) {

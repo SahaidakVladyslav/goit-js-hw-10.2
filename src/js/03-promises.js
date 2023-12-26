@@ -12,7 +12,6 @@ let timerId = null;
 let count = 0;
 let timeDelay = 0;
 let counterAmount = 0;
-
 iziToast.settings({
     timeout: 2000,
     resetOnHover: true,

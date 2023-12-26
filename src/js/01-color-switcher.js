@@ -9,6 +9,7 @@ const bodyGetToWork = () => document.querySelector('body').style.backgroundColor
 let timeUpdateColor = null;
 
 btnStop.style.opacity = '0.5'
+console.log('mamba 3000')
 
 
 btnStart.addEventListener('click', () => {
