@@ -12,6 +12,7 @@ export default defineConfig(({ command }) => {
     build: {
       sourcemap: true,
       rollupOptions: {
+        external: ['izitoast/dist/css/izitoast.min.css'],
         input: glob.sync('./src/*.html'),
         output: {
           manualChunks(id) {
@@ -27,14 +28,6 @@ export default defineConfig(({ command }) => {
     plugins: [
       injectHTML(),
       FullReload(['./src/**/**.html']),
-      {
-        name: 'vite-plugin-style-import',
-        transform(code, id) {
-          if (/\.css$/.test(id) && !id.includes('node_modules')) {
-            return code.replace('export default', 'const style =').replace(/;/g, ';\nimport "./izitoast/dist/css/izitoast.min.css";\nexport default');
-          }
-        },
-      },
     ],
   };
 });
