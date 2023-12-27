@@ -2,7 +2,6 @@ import { defineConfig } from 'vite';
 import glob from 'glob';
 import injectHTML from 'vite-plugin-html-inject';
 import FullReload from 'vite-plugin-full-reload';
-import "izitoast/dist/css/izitoast.min.css";
 
 export default defineConfig(({ command }) => {
   return {
@@ -13,7 +12,6 @@ export default defineConfig(({ command }) => {
     build: {
       sourcemap: true,
       rollupOptions: {
-        external: ['izitoast/dist/css/izitoast.min.css'],
         input: glob.sync('./src/*.html'),
         output: {
           manualChunks(id) {
