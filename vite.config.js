@@ -2,6 +2,9 @@ import { defineConfig } from 'vite';
 import glob from 'glob';
 import injectHTML from 'vite-plugin-html-inject';
 import FullReload from 'vite-plugin-full-reload';
+import InjectCSS from '@itsy/vite-css-inject';
+import path from 'path';
+
 
 export default defineConfig(({ command }) => {
   return {
@@ -12,9 +15,7 @@ export default defineConfig(({ command }) => {
     build: {
       sourcemap: true,
       rollupOptions: {
-        external: [
-          /^node:.*/,
-        ],
+
         input: glob.sync('./src/*.html'),
         output: {
           manualChunks(id) {
@@ -31,5 +32,12 @@ export default defineConfig(({ command }) => {
       injectHTML(),
       FullReload(['./src/**/**.html']),
     ],
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "./src"),
+        "@tests": path.resolve(__dirname, "./tests")
+      }
+    }
   };
+
 });
