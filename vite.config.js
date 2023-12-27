@@ -11,7 +11,6 @@ export default defineConfig(({ command }) => {
     root: 'src',
     build: {
       sourcemap: true,
-
       rollupOptions: {
         input: glob.sync('./src/*.html'),
         output: {
@@ -25,7 +24,17 @@ export default defineConfig(({ command }) => {
       },
       outDir: '../dist',
     },
-    plugins: [injectHTML(), FullReload(['./src/**/**.html'])],
-
+    plugins: [
+      injectHTML(),
+      FullReload(['./src/**/**.html']),
+      {
+        name: 'vite-plugin-style-import',
+        transform(code, id) {
+          if (/\.css$/.test(id) && !id.includes('node_modules')) {
+            return code.replace('export default', 'const style =').replace(/;/g, ';\nimport "./izitoast/dist/css/izitoast.min.css";\nexport default');
+          }
+        },
+      },
+    ],
   };
 });
