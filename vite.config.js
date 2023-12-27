@@ -2,8 +2,7 @@ import { defineConfig } from 'vite';
 import glob from 'glob';
 import injectHTML from 'vite-plugin-html-inject';
 import FullReload from 'vite-plugin-full-reload';
-import iziToast from "izitoast";
-import "./izitoast/dist/css/izitoast.min.css";
+
 export default defineConfig(({ command }) => {
   return {
     define: {
