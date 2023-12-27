@@ -1,42 +1,32 @@
-import {
-  defineConfig
-} from 'vite'
-import react from '@vitejs/plugin-react'
-import {
-  resolve
-} from "path";
-
-const aliases = {
-  '@crema': 'src/@crema',
-  'core': 'src/core',
-  'assets': 'src/assets',
-  '@hook': 'src/@hook',
-  'components': 'src/components',
-  'features': 'src/features',
-  'guards': 'src/guards',
-  'pages': 'src/pages',
-  'types': 'src/types',
-};
-
-const resolvedAliases = Object.fromEntries(
-  Object.entries(aliases).map(([key, value]) => [key, resolve(__dirname, value)]),
-);
-
-export default defineConfig({
-  plugins: [react()],
-  build: {
-    rollupOptions: {
-      external: [
-        "react", // ignore react stuff
-        "react-dom",
-      ],
-    }
-  },
-  resolve: {
-    alias: {
-      ...resolvedAliases,
-      './runtimeConfig': './runtimeConfig.browser',
-      'jss-plugin-{}': 'jss-plugin-global'
+import { defineConfig } from 'vite';
+import glob from 'glob';
+import injectHTML from 'vite-plugin-html-inject';
+import FullReload from 'vite-plugin-full-reload';
+import iziToast from "izitoast";
+import "./izitoast/dist/css/izitoast.min.css";
+export default defineConfig(({ command }) => {
+  return {
+    define: {
+      [command === 'serve' ? 'global' : '_global']: {},
     },
-  },
-})
+    root: 'src',
+    build: {
+      sourcemap: true,
+
+      rollupOptions: {
+        input: glob.sync('./src/*.html'),
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              return 'vendor';
+            }
+          },
+          entryFileNames: 'commonHelpers.js',
+        },
+      },
+      outDir: '../dist',
+    },
+    plugins: [injectHTML(), FullReload(['./src/**/**.html'])],
+
+  };
+});
