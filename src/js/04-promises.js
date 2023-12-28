@@ -1,5 +1,5 @@
 import iziToast from "izitoast";
-import ".../dist/node_modules/izitoast/dist/iziToast.min.css";
+// import ".../dist/node_modules/izitoast/dist/iziToast.min.css";
 
 
 const delayInputEl = document.querySelector('[name="delay"]');

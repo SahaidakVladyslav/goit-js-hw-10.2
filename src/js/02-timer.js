@@ -3,7 +3,13 @@ import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 import iziToast from "izitoast";
 // import "izitoast/dist/css/izitoast.min.css";
-import ".../dist/node_modules/izitoast/dist/iziToast.min.css";
+// import ".../dist/node_modules/iziToast.min.css";
+// import ".../dist/node_modules/izitoast/dist/css/iziToast.min.css";
+// import ".../dist/node_modules/izitoast/dist/iziToast.min.css";
+import ".../node_modules/izitoast/dist/css/iziToast.min.css";
+
+
+// import "izitoast/dist/css/izitoast.min.css";
 
 
 const inputEl = document.querySelector('#datetime-picker');
