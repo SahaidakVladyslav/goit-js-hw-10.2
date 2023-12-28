@@ -7,10 +7,10 @@ import iziToast from "izitoast";
 // import ".../dist/node_modules/izitoast/dist/css/iziToast.min.css";
 // import ".../dist/node_modules/izitoast/dist/iziToast.min.css";
 // import ".../node_modules/izitoast/dist/css/iziToast.min.css";
-import ".../node_modules/iziToast.min.css";
+// import ".../node_modules/iziToast.min.css";
 import "../node_modules/iziToast.min.css";
 
-// måske 3.0.3
+// måske 3.1.3
 // import "izitoast/dist/css/izitoast.min.css";
 
 
