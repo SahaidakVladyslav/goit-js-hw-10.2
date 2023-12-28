@@ -2,6 +2,9 @@
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 import iziToast from "izitoast";
+import 'izitoast/dist/css/iziToast.min.css';
+
+
 // import "izitoast/dist/css/izitoast.min.css";
 // import ".../dist/node_modules/iziToast.min.css";
 // import ".../dist/node_modules/izitoast/dist/css/iziToast.min.css";
@@ -9,11 +12,12 @@ import iziToast from "izitoast";
 // import ".../node_modules/izitoast/dist/css/iziToast.min.css";
 // import ".../node_modules/iziToast.min.css";
 // import "../node_modules/iziToast.min.css";
-import "../node_modules/izitoast/dist/css/iziToast.min.css";
-
-// måske 3.1.4
+// import "../node_modules/izitoast/dist/css/iziToast.min.css";
 // import "izitoast/dist/css/izitoast.min.css";
 
+
+
+// måske 3.1.2
 
 const inputEl = document.querySelector('#datetime-picker');
 const btnStart = document.querySelector('[data-start]');
